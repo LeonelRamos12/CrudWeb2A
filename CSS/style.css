@@ -8,12 +8,14 @@ body{
 a{
     text-decoration: none;
     color: black;
+    font-size: 30px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 a:hover{
-    background-color: black;
     color: white;
-    transform: scale(1.5);
+    transform: scale(1.2);
+    transition: transform 0.4s;
 }
 .btnAgregar{
     position: fixed; /*el boton queda flotante encima del contenido*/
