@@ -1,3 +1,10 @@
+body{
+    background-image: url(../img/descarga.jpg);
+    position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
 a{
     text-decoration: none;
     color: black;
@@ -6,4 +13,33 @@ a{
 a:hover{
     background-color: black;
     color: white;
+    transform: scale(1.5);
+}
+.btnAgregar{
+    position: fixed; /*el boton queda flotante encima del contenido*/
+    bottom: 30px; /*movemos el boton abajo*/
+    right: 40px;/*se mueve el boton hacia la derecha*/
+    background-color: darkgreen; /*color del boton*/
+    color: white; /*Color del icono o texto del boton*/
+    border-radius: 50%; /*bordes del boton*/
+    width: 70px; /*ancho del boton*/
+    height: 70px; /*altura del  boton*/
+    border: none;/*quitar demas bordes*/
+    box-shadow: 0 4px 10px rgb(0, 0, 0.5);/*la sombra del boton*/
+    display: flex;/*activamos flexbox*/
+    justify-content: center;/*alineacion horizontal*/
+    align-items: center;/*alineacion vertical*/
+    z-index: 1001;/*Para que el boton quede encima de todo*/
+    transition: transform 0.4s;
+}
+.btnAgregar:hover{
+    transform: scale(1.5);
+    background-color: green;
+    color: white;
+}
+.tabla_scroll{
+    overflow-x: auto;/*Scroll horizontal*/
+}
+button{
+    margin: 1px;
 }

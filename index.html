@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Crud Web</title>
+    <!--Hoja de estilos pico-->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
+    <!--Hoja de estilos CSS-->
     <link rel="stylesheet" href="CSS/style.css">
   </head>
   <body>
@@ -23,7 +25,6 @@
                 </li>
             </ul>
             <ul>
-                <li><a href="#">Integrantes</a></li>
                 <li><a href="#">Tareas</a></li>
                 <li><a href="#">Mi Perfil</a></li>
                 <li><a href="#" role="button">Cerrar Sesion</a></li>
@@ -34,21 +35,27 @@
     <main class="container">
         <h2>Empleados</h2>
 
-        <table id="tabla" class="overflow-auto">
-            <thead>
-                <tr>
-                    <th>NIT</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Correo</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
+        <div class="tabla_scroll">
+            <table id="tabla" class="overflow-auto">
+                <thead>
+                    <tr>
+                        <th>NIT</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+    
+                </tbody>
+            </table>
+        </div>
     </main>
+    <!--Boton Flotante para agregar registros-->
+    <button id="btnAgregar" class="btnAgregar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-plus-icon lucide-user-round-plus"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="M19 16v6"/><path d="M22 19h-6"/></svg>
+    </button>
     <script src="JS/API.js"></script>
   </body>
 </html>
