@@ -45,3 +45,8 @@ a:hover{
 button{
     margin: 1px;
 }
+th:hover{
+    color: black;
+    transform: scale(1.2);
+    transition: transform 0.4s;
+}
