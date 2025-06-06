@@ -52,5 +52,30 @@ btnCerrar.addEventListener("click", ()=>{
 //Agregar nuevo integrante 
 document.getElementById("frmAgregar").addEventListener("submit", async e => {
     e.preventDefault();//"e" representa a submit y evita que el formulario se envie de un solo.
-    
+  const FirstName = document.getElementById("txtNombre").value.trim();
+  const LastName = document.getElementById("txtApellido").value.trim();
+  const Email = document.getElementById("txtCorreo").value.trim();
+
+  if(!FirstName || !LastName || !Email){
+    alert("ingrese los valores correctamente");
+    return;
+  }
+//llamar a la api para enviar el registro
+  const Respuesta = await fetch(Api,{
+  method: "POST",
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify({FirstName, LastName, Email})
+  });
+  //verificar si la API responde que los datos fueron enviados correctamente
+  if(Respuesta.ok){
+    alert("el registro fue agregado correctamente");
+
+    //limpiar el formulario
+    document.getElementById("frmAgregar").reset();
+
+    //cerrar el modal
+    modal.close();
+
+    GetEmployees();
+  }
 });
