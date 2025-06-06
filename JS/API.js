@@ -25,7 +25,7 @@ function MostrarDatosEmpleados(datos) {
           <td>${Employee.Email}</td>
           <td>
            <button> Editar </button>
-           <button> Eliminar </button>
+           <button onclick = "EliminarPersona(${Employee.id})"> Eliminar </button>
          </td>
         </tr>
         `;
@@ -62,20 +62,44 @@ document.getElementById("frmAgregar").addEventListener("submit", async e => {
   }
 //llamar a la api para enviar el registro
   const Respuesta = await fetch(Api,{
+    //Metodo que usaremos para agregar
   method: "POST",
+  //
   headers: {"Content-Type": "application/json"},
+  //apartados a los cuales se le agregaran los valores nuevos
   body: JSON.stringify({FirstName, LastName, Email})
   });
   //verificar si la API responde que los datos fueron enviados correctamente
   if(Respuesta.ok){
-    alert("el registro fue agregado correctamente");
+    // si la API devuelve un código 200-299 
+  alert("el registro fue agregado correctamente");
+
 
     //limpiar el formulario
     document.getElementById("frmAgregar").reset();
 
     //cerrar el modal
     modal.close();
-
+    //Actualiza la tabla
     GetEmployees();
   }
+  else{
+    //en caso de que la API devuelva un código diferente de 200-299
+    alert("El registro no pudo ser agregado");
+  }
 });
+
+//funcion para borrar registros
+async function EliminarPersona(id){
+  const confirmacion = confirm("Quieres eliminar el registro");
+
+  //Validamos si el usuario escogio borrar
+  if(confirmacion){
+    await fetch(`${Api}/${id}`, {
+      method : "DELETE"
+    });
+    //recargar tabla
+    GetEmployees();
+  }
+
+}
