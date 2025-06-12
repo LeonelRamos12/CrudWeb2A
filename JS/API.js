@@ -119,7 +119,39 @@ function abrirModal(id, FirstName, LastName, Email){
   document.getElementById("txtApellidoActualizar").value = LastName;
   document.getElementById("txtCorreoActualizar").value = Email;
 
-  //abrimos rl modal
+  //abrimos el modal
   modalEditar.showModal();
 }
+
+document.getElementById("frmActualizar").addEventListener("submit", async e => {
+  //evita que el formulario se envie de un solo
+  e.preventDefault();
+  //CAPTURAR VALORES DE LO INPUT
+  const id = document.getElementById("txtIdEditar").value;
+  const FirstName = document.getElementById("txtNombreActualizar").value.trim();
+  const LastName = document.getElementById("txtApellidoActualizar").value.trim();
+  const Email = document.getElementById("txtCorreoActualizar").value.trim();
+
+    //validacion de las constantes
+  if(!id || !FirstName || !LastName || !Email){
+    alert("Ingrese los valores correctamente");
+    return;
+  }
+  
+  const respuesta = await fetch(`${Api}/${id}`, {
+    method : 'PUT',
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({FirstName, LastName, Email})
+  });
+
+  if(respuesta.ok){
+    alert("el registro fue actualizado con exito");
+    modalEditar.close();
+    GetEmployees();
+  }
+  else{
+    alert("el registro no pudo ser actualizado");
+  }
+
+});
 
