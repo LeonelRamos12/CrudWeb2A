@@ -24,7 +24,7 @@ function MostrarDatosEmpleados(datos) {
           <td>${Employee.LastName}</td>
           <td>${Employee.Email}</td>
           <td>
-           <button> Editar </button>
+           <button onclick = "abrirModal('${Employee.id}','${Employee.FirstName}', '${Employee.LastName}','${Employee.Email}')"> Editar </button>
            <button onclick = "EliminarPersona(${Employee.id})"> Eliminar </button>
          </td>
         </tr>
@@ -103,3 +103,23 @@ async function EliminarPersona(id){
   }
 
 }
+
+/*Proceso para editar un registro*/ 
+const modalEditar = document.getElementById("mdActualizar");
+const cerrar = document.getElementById("btnCerrarActualizar");
+
+cerrar.addEventListener("click" , ()=>{
+  modalEditar.close(); //cerramos el modal
+});
+
+function abrirModal(id, FirstName, LastName, Email){
+  //se asignan los valores a los input del registro
+  document.getElementById("txtIdEditar").value = id;
+  document.getElementById("txtNombreActualizar").value = FirstName;
+  document.getElementById("txtApellidoActualizar").value = LastName;
+  document.getElementById("txtCorreoActualizar").value = Email;
+
+  //abrimos rl modal
+  modalEditar.showModal();
+}
+
